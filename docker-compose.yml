@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+  sonarqube:
+    image: novobidevops/sonar-server
+    depends_on:
+      - sonar-db
+      - fix-sysctl
+    ports:
+      - "9000:9000"
+    networks:
+      - sonarnet
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://sonar-db:5432/sonar
+      SONAR_JDBC_USERNAME: sonar
+      SONAR_JDBC_PASSWORD: sonar
+    volumes:
+      - ./sonar_data:/opt/sonar_data/
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+      - sonarqube_temp:/opt/sonarqube/temp
+  sonar-db:
+    image: postgres:10
+    networks:
+      - sonarnet
+    environment:
+      POSTGRES_USER: sonar
+      POSTGRES_PASSWORD: sonar
+    volumes:
+      - postgresql_sonar:/var/lib/postgresql
+      - postgresql_sonar_data:/var/lib/postgresql/data
+  fix-sysctl:
+    image: rawmind/alpine-sysctl:0.2-1
+    privileged: true
+    environment:
+      SYSCTL_VALUE: 262144
+
+networks:
+  sonarnet:
+    driver: bridge
+
+volumes:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
+  sonarqube_temp:
+  postgresql_sonar:
+  postgresql_sonar_data:

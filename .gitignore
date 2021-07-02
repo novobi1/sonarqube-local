@@ -1,0 +1,5 @@
+.vagrant
+.idea
+.vscode
+get_sonar_novobi.py
+*.log

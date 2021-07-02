@@ -1,0 +1,227 @@
+{
+    "qualitygates": [
+        {
+            "name": "Novobi way",
+            "isDefault": false,
+            "isBuiltIn": false,
+            "actions": {
+                "rename": true,
+                "setAsDefault": true,
+                "copy": true,
+                "associateProjects": true,
+                "delete": true,
+                "manageConditions": true
+            },
+            "conditions": [
+                {
+                    "metric": "new_security_rating",
+                    "op": "GT",
+                    "error": "1"
+                },
+                {
+                    "metric": "new_reliability_rating",
+                    "op": "GT",
+                    "error": "1"
+                },
+                {
+                    "metric": "new_maintainability_rating",
+                    "op": "GT",
+                    "error": "2"
+                },
+                {
+                    "metric": "new_security_hotspots_reviewed",
+                    "op": "LT",
+                    "error": "100"
+                },
+                {
+                    "metric": "bugs",
+                    "op": "GT",
+                    "error": "1"
+                }
+            ]
+        },
+        {
+            "name": "Sonar way",
+            "isDefault": false,
+            "isBuiltIn": true,
+            "actions": {
+                "rename": false,
+                "setAsDefault": true,
+                "copy": true,
+                "associateProjects": true,
+                "delete": false,
+                "manageConditions": false
+            },
+            "conditions": [
+                {
+                    "metric": "new_security_rating",
+                    "op": "GT",
+                    "error": "1"
+                },
+                {
+                    "metric": "new_reliability_rating",
+                    "op": "GT",
+                    "error": "1"
+                },
+                {
+                    "metric": "new_maintainability_rating",
+                    "op": "GT",
+                    "error": "1"
+                },
+                {
+                    "metric": "new_coverage",
+                    "op": "LT",
+                    "error": "80"
+                },
+                {
+                    "metric": "new_duplicated_lines_density",
+                    "op": "GT",
+                    "error": "3"
+                },
+                {
+                    "metric": "new_security_hotspots_reviewed",
+                    "op": "LT",
+                    "error": "100"
+                }
+            ]
+        },
+        {
+            "name": "Standard way",
+            "isDefault": false,
+            "isBuiltIn": false,
+            "actions": {
+                "rename": true,
+                "setAsDefault": true,
+                "copy": true,
+                "associateProjects": true,
+                "delete": true,
+                "manageConditions": true
+            },
+            "conditions": [
+                {
+                    "metric": "new_duplicated_lines_density",
+                    "op": "GT",
+                    "error": "5"
+                },
+                {
+                    "metric": "new_blocker_violations",
+                    "op": "GT",
+                    "error": "0"
+                },
+                {
+                    "metric": "new_critical_violations",
+                    "op": "GT",
+                    "error": "5"
+                },
+                {
+                    "metric": "new_bugs",
+                    "op": "GT",
+                    "error": "0"
+                },
+                {
+                    "metric": "new_maintainability_rating",
+                    "op": "GT",
+                    "error": "1"
+                },
+                {
+                    "metric": "new_reliability_rating",
+                    "op": "GT",
+                    "error": "1"
+                },
+                {
+                    "metric": "new_security_rating",
+                    "op": "GT",
+                    "error": "1"
+                },
+                {
+                    "metric": "duplicated_lines_density",
+                    "op": "GT",
+                    "error": "8"
+                },
+                {
+                    "metric": "blocker_violations",
+                    "op": "GT",
+                    "error": "3"
+                },
+                {
+                    "metric": "critical_violations",
+                    "op": "GT",
+                    "error": "8"
+                },
+                {
+                    "metric": "bugs",
+                    "op": "GT",
+                    "error": "1"
+                },
+                {
+                    "metric": "sqale_rating",
+                    "op": "GT",
+                    "error": "2"
+                },
+                {
+                    "metric": "reliability_rating",
+                    "op": "GT",
+                    "error": "1"
+                },
+                {
+                    "metric": "security_hotspots_reviewed",
+                    "op": "LT",
+                    "error": "80"
+                },
+                {
+                    "metric": "security_rating",
+                    "op": "GT",
+                    "error": "1"
+                },
+                {
+                    "metric": "new_security_review_rating",
+                    "op": "GT",
+                    "error": "1"
+                },
+                {
+                    "metric": "security_review_rating",
+                    "op": "GT",
+                    "error": "2"
+                }
+            ]
+        },
+        {
+            "name": "Standard way - April 2021",
+            "isDefault": true,
+            "isBuiltIn": false,
+            "actions": {
+                "rename": true,
+                "setAsDefault": false,
+                "copy": true,
+                "associateProjects": false,
+                "delete": false,
+                "manageConditions": true
+            },
+            "conditions": [
+                {
+                    "metric": "new_maintainability_rating",
+                    "op": "GT",
+                    "error": "1"
+                },
+                {
+                    "metric": "new_reliability_rating",
+                    "op": "GT",
+                    "error": "1"
+                },
+                {
+                    "metric": "new_security_rating",
+                    "op": "GT",
+                    "error": "1"
+                },
+                {
+                    "metric": "new_security_review_rating",
+                    "op": "GT",
+                    "error": "1"
+                }
+            ]
+        }
+    ],
+    "actions": {
+        "create": true
+    }
+}
