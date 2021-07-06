@@ -156,6 +156,7 @@ class SonarNovobi():
                 self.create_quality_gate(name)
             self.create_quality_gate_conditions(name, conditions)
         self.set_default_quality_gate(self.current_default_quality_gate)
+        print('Done')
 
     # def check_user_token(self, name):
     #     url = self.host_url + '/api/user_tokens/search?login='
