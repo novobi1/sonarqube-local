@@ -190,7 +190,7 @@ class SonarNovobi():
     #         print('------------------------------')
     #         self.replace_user_token(token)
 
-    def send_api_request(self, api_url, request_type, headers={"Authorization": "Basic YWRtaW46YWRtaW4="}, data={}, files=[]):
+    def send_api_request(self, api_url, request_type, headers={"Authorization": "Basic YWRtaW46b2Rvbw=="}, data={}, files=[]):
         try:
             if request_type == 'post':
                 response = requests.post(
@@ -250,8 +250,17 @@ class SonarNovobi():
                     self.update_quality_profiles()
                     copyfile(server_file_path, local_file_path)
             else:
+                self.change_admin_password('admin', 'odoo')
                 self.update_quality_profiles()
                 copyfile(server_file_path, local_file_path)
+
+    def change_admin_password(self, p_pass, new_pass):
+        url = self.host_url + '/api/users/change_password?login=admin'
+        previous_password = '&previousPassword=' + p_pass
+        new_password = '&password=' + new_pass
+        api_url = url + new_password + previous_password
+        self.send_api_request(api_url, 'post', headers={
+                              "Authorization": "Basic YWRtaW46YWRtaW4="})
 
     def compare_data(self):
         if self.load_server_data():
