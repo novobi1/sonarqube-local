@@ -1,5 +1,0 @@
-MacOS, Linux and Windows PowerShell:
-docker run --rm --network host -v ${PWD}:/usr/src novobidevops/sonar-scanner your-project-key
-
-Windows cmd:
-docker run --rm --network host -v "%cd%":/usr/src novobidevops/sonar-scanner your-project-key

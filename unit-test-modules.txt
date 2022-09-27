@@ -1,0 +1,4 @@
+# comment start with # character
+
+sale_automatic_workflow
+sale_delivery_state
