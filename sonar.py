@@ -77,15 +77,18 @@ def clean():
 def main():
     parser = argparse.ArgumentParser(description='Run code analysis')
     parser.add_argument(
-        '--project-key', default='sonarqube-local', help='Your project key')
+        'project-key', default='sonarqube-local', help='your project key [Default: sonarqube-local]', nargs='?')
     parser.add_argument('--unit-test', '-t', action='store_true',
-                        help='Analyze code with unit test')
+                        help='analyze code with unit test')
     parser.add_argument(
-        '--postgres-version', help='PostgreSQL version to run unit test [Default: 14]', default='14')
+        'postgres-version', help='PostgreSQL version to run unit test [Default: 14]', default='14', nargs='?')
 
     args = vars(parser.parse_args())
-    project_key = args['project_key']
-    os.environ['POSTGRES_VERSION'] = args['postgres_version']
+
+    project_key = args['project-key']
+    postgres_version = args['postgres-version']
+
+    os.environ['POSTGRES_VERSION'] = postgres_version
 
     if args['unit_test']:
         start_postgresql()
